@@ -1,0 +1,51 @@
+def __load_from_file(self):
+        """
+        Pune in repo-ul din memorie filmele din fisier
+        """
+        with open(self.__filename, "r") as f:
+            lines=f.readlines()
+            for line in lines:
+                if line == '\n':
+                    break
+                movie_id, movie_titlu, movie_desc, movie_gen=[token.strip() for token in line.split(";")]
+                film = Movie(movie_id, movie_titlu, movie_desc, movie_gen)
+                MovieRepository.add_movie(self, film)"""
+
+    def __save_to_file(self):
+        """
+        Salveaza in fisier date din in memory
+        """
+        with open(self.__filename,"w") as f:
+            films = MovieRepository.return_all_movies(self)
+            for film in films:
+                str_movie = str(film.get_id())+";"+str(film.get_titlu())+";"+str(film.get_desc())+";"+str(film.get_gen())+"\n"
+                f.write(str_movie)
+
+def __load_from_file(self):
+        
+        with open(self.__filename, "r") as f:
+            lines = f.readline()
+            for line in lines:
+                if line == "\n":
+                    break
+                client_id, client_nume, client_cnp=[token.strip() for token in line.split(";")]
+                customer = Client(client_id, client_nume, client_cnp)
+                ClientiRepository.add_client(self, customer)
+
+    def __save_in_file(self):
+
+        with open(self.__filename, "w") as f:
+            clienti = ClientiRepository.return_all_cl(self)
+            for client in clienti:
+                value = str(client.get_id())+";"+str(client.get_nume())+";"+str(client.get_cnp())+"\n" 
+                f.write(value)
+
+1
+Dani
+5092341729392
+2
+Nicu
+5374218943212
+3
+Marian
+5040910330217
